@@ -1,0 +1,14 @@
+body {
+    background-color: green;
+}
+
+.MyH {
+    color: white;
+    text-align: center;
+}
+
+.MyInput{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}
