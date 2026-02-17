@@ -33,3 +33,10 @@ body {
 #clearButton {
     background-color: rgb(188, 25, 25);
 }
+
+ol {
+    list-style-type: none;
+    background-color: white;
+    width: 50%;
+    margin: 40px auto;
+}
