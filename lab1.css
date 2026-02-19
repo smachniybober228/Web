@@ -1,5 +1,7 @@
 body {
     background-color: rgb(18, 125, 93);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
 }
 
 .MyH {
@@ -8,7 +10,6 @@ body {
 }
 
 .MyInput{
-    background-color: rgb(255, 0, 0);
     display: flex;
     justify-content: center;
     width: 80%;
@@ -19,11 +20,17 @@ body {
 .MyInput input {
     width: 60%;
     border: 0;
+
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .MyInput button {
     width: 20%;
     border: 0;
+
+    font-family: inherit;
+    font-size: inherit;
 }
 
 #createButton {
@@ -36,7 +43,33 @@ body {
 
 ol {
     list-style-type: none;
-    background-color: white;
     width: 50%;
     margin: 40px auto;
+
+    font-family: inherit;
+    font-size: inherit;
 }
+
+ol li {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+
+ol li:hover{
+    background-color: lightgray;
+}
+
+ol li:has(input:checked){
+    background-color: gray;
+}
+
+.MyLabel:has(input:checked){
+    text-decoration: line-through;
+}
+
+/* .MyButton{
+    align-self: flex-end;
+} */
