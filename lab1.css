@@ -11,10 +11,11 @@ body {
 
 .MyInput{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     width: 80%;
     height: 37px;
-    margin: 0 auto;
+    margin: 0px auto;
 }
 
 .MyInput input {
@@ -26,7 +27,8 @@ body {
 }
 
 .MyInput button {
-    width: 20%;
+    min-width: 90px;
+    width: 19%;
     border: 0;
 
     font-family: inherit;
@@ -66,10 +68,31 @@ ol li:has(input:checked){
     background-color: gray;
 }
 
+.MyLabel {
+    display: flex;
+    flex-direction: row;
+}
+
 .MyLabel:has(input:checked){
     text-decoration: line-through;
 }
 
-/* .MyButton{
-    align-self: flex-end;
-} */
+.TaskText {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 10px;
+}
+
+.SubTaskText {
+    text-decoration: none;
+}
+
+.site-footer {
+    text-align: center;
+    color: white;
+}
+
+.MyButton {
+    border: 0px;
+    background-color: inherit;
+}
