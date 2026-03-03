@@ -14,22 +14,23 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     width: 80%;
-    height: 37px;
     margin: 0px auto;
 }
 
 .MyInput input {
     width: 60%;
     border: 0;
+    height: 37px;
 
     font-family: inherit;
     font-size: inherit;
 }
 
 .MyInput button {
-    min-width: 90px;
+    min-width: 150px;
     width: 19%;
     border: 0;
+    height: 39px;
 
     font-family: inherit;
     font-size: inherit;
@@ -73,11 +74,11 @@ ol li:has(input:checked){
     flex-direction: row;
 }
 
-.MyLabel:has(input:checked){
+.MyLabel:has(input:checked) .TaskText{
     text-decoration: line-through;
 }
 
-.TaskText {
+.AllText {
     display: flex;
     flex-direction: column;
     margin: 0px 0px 0px 10px;
