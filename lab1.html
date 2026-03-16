@@ -11,40 +11,44 @@
     <h1 class="MyH">Список дел</h1>
     <div class="MyInput">
         <input type="text" placeholder="Новый элемент списка"/>
-        <button id="createButton">Создать</button>
-        <button id="clearButton">Очистить всё</button>
+        <div class="ButtonsWrapper">
+            <button id="createButton">Создать</button>
+            <button id="clearButton">Очистить всё</button>
+        </div>
     </div>
     <ol>
         <li>
             <label class="MyLabel">
-                <input type="checkbox">
+                <input type="checkbox" class="CustomCheckbox">
+                <span class="Checkmark"></span>
                 <span class="AllText">
-                <span class="TaskText"> Почесать кошку</span>
+                <span class="TaskText">Почесать кошку</span>
                 <sub class="SubTaskText">от 24.08.2023</sub>
                 </span>
-
             </label>
-            <button class="MyButton">&#10060</button>
+            <button class="MyButton">✖</button>
         </li>
         <li>
             <label class="MyLabel">
-                <input type="checkbox">
+                <input type="checkbox" class="CustomCheckbox">
+                <span class="Checkmark"></span>
                 <span class="AllText">
-                <span class="TaskText"> Полить картошку</span>
+                <span class="TaskText">Полить картошку</span>
                 <sub class="SubTaskText">от 04.05.2022</sub>
                 </span>
             </label>
-            <button class="MyButton">&#10060</button>
+            <button class="MyButton">✖</button>
         </li>
         <li>
             <label class="MyLabel">
-                <input type="checkbox">
+                <input type="checkbox" class="CustomCheckbox">
+                <span class="Checkmark"></span>
                 <span class="AllText">
-                <span class="TaskText"> Сложить в лукошко</span>
+                <span class="TaskText">Сложить в лукошко</span>
                 <sub class="SubTaskText">от 14.05.2022</sub>
                 </span>
             </label>
-            <button class="MyButton">&#10060</button>
+            <button class="MyButton">✖</button>
         </li>
     </ol>
     </main>

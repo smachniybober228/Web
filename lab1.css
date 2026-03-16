@@ -15,12 +15,18 @@ body {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
     flex: 1; /* Занимает всё свободное место, прижимая футер к низу */
+    overflow: hidden;
+    justify-content: center;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .MyH {
     color: white;
     text-align: center;
+    font-family: "Pacifico", cursive;
 }
 
 .MyInput{
@@ -28,7 +34,8 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     width: 80%;
-    margin: 0px auto;
+    align-self: center;
+    margin-bottom: 20px;
 }
 
 .MyInput input {
@@ -41,12 +48,20 @@ main {
     font-size: inherit;
 }
 
-.MyInput button {
-    min-width: 150px;
-    width: 19%;
+.ButtonsWrapper {
+    display: flex;
+    flex-wrap: nowrap;     /* кнопки всегда в одной строке */
+    flex: 1 1 auto;        /* занимает доступное место в строке */
+    min-width: fit-content;/* минимальная ширина по содержимому */
+    max-width: 20%;
+}
+
+/* Стили кнопок внутри обёртки */
+.ButtonsWrapper button {
+    flex: 1 1 0;           /* кнопки равной ширины, делят пространство */
+    min-width: 150px;      /* но не меньше 150px */
     border: 0;
     height: 39px;
-
     font-family: inherit;
     font-size: inherit;
 }
@@ -62,10 +77,15 @@ main {
 ol {
     list-style-type: none;
     width: 50%;
-    margin: 40px auto;
 
     font-family: inherit;
     font-size: inherit;
+
+    overflow-y: auto;       /* включает вертикальную прокрутку */
+    align-self: center;
+    margin: 0;
+    padding-left: 0;
+    
 }
 
 ol li {
@@ -90,26 +110,100 @@ ol li:has(input:checked){
 }
 
 .MyLabel:has(input:checked) .TaskText{
+    color: white;
     text-decoration: line-through;
+}
+
+.MyLabel:has(input:checked) .SubTaskText{
+    color: white;
 }
 
 .AllText {
     display: flex;
     flex-direction: column;
-    margin: 0px 0px 0px 10px;
+    margin-left: 20px;
 }
 
 .SubTaskText {
     text-decoration: none;
+    font-size: 15px;
+    color: rgb(170, 170, 170);
 }
 
 .site-footer {
     text-align: center;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .MyButton {
     border: 0px;
     background-color: inherit;
+
+    font-family: inherit;
+    font-size: inherit;
+}
+
+ol li:has(input:checked) .MyButton {
+    color: white;
+}
+
+ol li:hover .MyButton {
+    color:gray;
+}
+
+ol:empty::before {
+    content: "Не найдено ни одного дела";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    color: white;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 10px;
+    white-space: nowrap; /* чтобы текст не переносился */
+
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.CustomCheckbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+/* Стили для кастомного чекбокса (общий вид) */
+.Checkmark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+}
+
+/* Рисуем галочку с помощью псевдоэлемента */
+.Checkmark::after {
+    content: "";
+    display: none;
+    width: 8px;
+    height: 18px;
+    border: solid white;
+    border-width: 0 5px 5px 0;
+    
+
+    position: relative;
+    left: 10px;
+    top: 8px;
+    transform: rotate(45deg);
+
+}
+
+/* Показываем галочку, когда чекбокс отмечен */
+.CustomCheckbox:checked + .Checkmark::after {
+    display: block;
 }
