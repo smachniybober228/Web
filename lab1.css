@@ -5,7 +5,8 @@ html, body {
 }
 
 body {
-    background-color: rgb(18, 125, 93);
+    /* background-color: rgb(18, 125, 93); */
+    background-image: url("backimage.jpg");
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
 

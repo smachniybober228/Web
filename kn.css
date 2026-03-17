@@ -1,0 +1,106 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Занимает всё свободное место, прижимая футер к низу */
+}
+
+.header {
+    background-color: lightgray;
+}
+
+.header a:first-child{
+    margin-left: 60px;
+}
+
+.header a{
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.header2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#bla {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(backimage.jpg);
+    margin: 20px;
+    height: 300px;
+}
+
+#bla p {
+    width: 50%;
+    color: white;
+}
+
+.bla2 {
+    background-color:rgb(179, 189, 43);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+div p:first-child{
+    font-weight: bold;
+}
+
+div label:first-child{
+    font-weight: bold;
+}
+
+.bla3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.bla3 > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: orangered;
+    border-color: orangered;
+    border-radius: 20px;
+    color: white;
+}
+
+button:hover {
+    background-color: white;
+    color: orangered
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: orange;
+    align-items: center;
+}
