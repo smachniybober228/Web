@@ -108,6 +108,9 @@ ol li:has(input:checked){
 .MyLabel {
     display: flex;
     flex-direction: row;
+
+    flex: 1;
+    min-width: 0;
 }
 
 .MyLabel:has(input:checked) .TaskText{
@@ -123,6 +126,17 @@ ol li:has(input:checked){
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+
+    min-width: 0;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.TaskText,
+.SubTaskText {
+    white-space: nowrap;
 }
 
 .SubTaskText {
