@@ -51,7 +51,10 @@ button {
     flex-direction: row;
 }
 
+#myDiv1 > div {
+    flex: 1; /* каждый займёт равную долю */
+}
+
 #divImage {
-    width: 50%;
     background-image: url("backimage.jpg");
 }
