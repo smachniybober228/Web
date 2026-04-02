@@ -47,7 +47,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(backimage.jpg);
+    background-image: url(../backimage.jpg);
     margin: 20px;
     height: 300px;
 }
