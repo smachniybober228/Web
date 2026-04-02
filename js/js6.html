@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        const n = Number(prompt("Введите число N", 10));
+        for (let i = 2; i <= n; i++){
+            let isSimple = true;
+            for (let j = 2; j < i; j++){
+                if (i % j === 0){
+                    isSimple = false
+                    break
+                }
+            }
+            if (isSimple) alert(i)
+        }
+    </script>
+</head>
+<body></body>
