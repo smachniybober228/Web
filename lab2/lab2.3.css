@@ -19,7 +19,12 @@ p {
 }
 
 #welcome {
-    background-image: url("../backimage.jpg");
+    background-image: url("../resources/Spain.jpg");
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,10 +54,10 @@ button {
 #myDiv1 {
     display: flex;
     flex-direction: row;
-}
+} 
 
 #myDiv1 > div {
-    flex: 1; /* каждый займёт равную долю */
+    flex: 1; /* каждый займёт равную долю  */
 }
 
 #divImage {
