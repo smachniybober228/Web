@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function getFreqMap(string){
+            // Получение словаря с частотой каждой буквы в строке
+            const freq = new Map();
+            for (const char of string){
+                freq.set(char, (freq.get(char) || 0) + 1);
+            }
+            return freq;
+        }
+
+        function one(string = "фывфавыапрс") {
+            const freq = getFreqMap(string);
+
+            // for (const char of string){
+            //     if (freq.get(char) === 1) return char;
+            // }
+
+            for (const [char, count] of freq){
+                if (count === 1) return char;
+            }
+            return null;
+        }
+
+        function two(n = 5){
+            const symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let result = "";
+            for (let i = 0; i < n; i ++){
+                result += symbols[Math.floor(Math.random() * symbols.length)];
+            }
+            return result;
+        }
+
+        function three(string = "позволяеткопироватьтекстиз"){
+            const freq = getFreqMap(string);
+            let result = "";
+            
+            freq.forEach((value, key) => {
+                if (value === 1) result += key;
+            })
+
+            return result;
+        }
+
+        alert(one());
+        alert(two());
+        alert(three());
+    </script>
+</head>
+<body></body>
