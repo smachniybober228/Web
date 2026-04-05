@@ -18,23 +18,50 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
 }
 
+div > h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
 }
 
-/* div p:first-child{
-    font-weight: bold;
-    color: black;
-} */
-
 p {
     color: gray;
 }
 
+a {
+    color: inherit;          /* наследует цвет родительского элемента */
+    text-decoration: none;   /* убирает подчёркивание */
+}
+
+#navigationBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.logo > .travel {
+    color: black;
+}
+
+.logo > .world {
+    color: rgb(255, 108, 108);
+}
+
+#navigationBar > div > a {
+    margin-right: 13px;
+}
+
 #welcome {
     background-image: url("../resources/Spain.jpg");
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     background-blend-mode: multiply;
     background-size: cover;
     background-repeat: no-repeat;
@@ -76,6 +103,8 @@ button {
 
 #myDiv1 > div {
     flex: 1; /* каждый займёт равную долю  */
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 #divImage {
