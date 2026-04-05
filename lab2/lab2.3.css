@@ -4,15 +4,21 @@ html, body {
     height: 100%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    margin: 0; /* обнулили все отступы */
+    padding: 0; /* и поля */
+    color: black;
+}
+
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
 }
 
-div p:first-child{
+/* div p:first-child{
     font-weight: bold;
     color: black;
-}
+} */
 
 p {
     color: gray;
@@ -32,16 +38,20 @@ p {
     height: 300px;
 }
 
-#welcome p {
+#welcome > p,
+#welcome > h1 {
     color: white;
 }
 
 button {
-    background-color: rgb(255, 73, 73);
-    border-color: rgb(255, 73, 73);
+    background-color: rgb(255, 108, 108);
+    /* border-color: rgb(255, 108, 108); */
+    border: 0px;
     color: white;
-    border-radius: 50%;
-    padding: 10px;
+    border-radius: 20px;
+    padding: 11px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 #about {
@@ -61,5 +71,12 @@ button {
 }
 
 #divImage {
-    background-image: url("../backimage.jpg");
+    background-image: url("../resources/Kolmar.jpg");
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 10px;
 }
