@@ -5,7 +5,13 @@ html, body {
 }
 
 body > div {
+    --padding-x: 120px;
+    --padding-y: 60px;
     background-color: rgb(224, 224, 224);
+    padding-left: var(--padding-x);
+    padding-right: var(--padding-x);
+    padding-top: var(--padding-y);
+    padding-bottom: var(--padding-y);
 }
 
 body > div:nth-child(odd){
@@ -80,6 +86,7 @@ a {
     align-items: center;
     justify-content: center;
     height: 300px;
+    padding: 0px;
 }
 
 #welcome > p,
@@ -102,7 +109,6 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px;
 }
 
 #myDiv1 {
@@ -116,12 +122,68 @@ button {
     margin-right: 15px;
 }
 
-#divImage {
-    background-image: url("../resources/Kolmar.jpg");
-    background-color: rgba(0, 0, 0, 0.2);
-    background-blend-mode: multiply;
+.MyImage {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 10px;
+}
+
+#Kolmar {
+    background-image: url("../resources/Kolmar.jpg");
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: multiply;
+    /* background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px; */
+}
+
+/* #Edinburg {
+    background-image: url("../resources/Edinburg.jpg");
+    background-blend-mode: multiply;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+#Edinburg > * {
+    color: white;
+    background-color: rgba(0, 0, 0, 1);
+    text-align: center;
+    width: 100%;
+} */
+
+#best {
+    padding-left: calc(var(--padding-x) + 80px);
+    padding-right: calc(var(--padding-x) + 80px);
+}
+
+#Edinburg {
+    background-image: url("../resources/Edinburg.jpg");
+    background-blend-mode: multiply;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+#Edinburg > div {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+#Edinburg > div > * {
+    color: white;
+}
+
+#Edinburg > div :last-child {
+    margin-bottom: 0px;
 }
