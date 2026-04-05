@@ -52,6 +52,10 @@ a {
     box-shadow: 0px 3px 5px rgb(214, 214, 214); /* горизонтальное смещение, вертикальное смещение, размытие, цвет */
 }
 
+#navigationBar + div {
+    padding-top: 44px;
+}
+
 .logo > .travel {
     color: black;
 }
