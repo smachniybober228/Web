@@ -187,3 +187,51 @@ button {
 #Edinburg > div :last-child {
     margin-bottom: 0px;
 }
+
+/* flex-container */
+#directions > div{
+    display: flex;
+    flex-direction: row;
+}
+
+/* card */
+#directions > div > div {
+    background-color: white;
+    box-shadow: 0px 3px 10px rgb(214, 214, 214); /* горизонтальное смещение, вертикальное смещение, размытие, цвет */
+    flex: 1;
+    height: 400px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+}
+
+#directions > div > div + div {
+    margin-left: 23px;
+}
+
+.list-image {
+    height: 40%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* text-container */
+.list-image + div {
+    flex: 1;                /* занимает всё оставшееся пространство */
+    overflow-y: auto;       /* скролл только для текста */
+    padding: 20px;
+}
+
+#budapesht {
+    background-image: url("../resources/Budapesht.jpg");
+}
+
+#paris {
+    background-image: url("../resources/Paris.jpg");
+}
+
+#new-york {
+    background-image: url("../resources/New\ York.jpg");
+}
