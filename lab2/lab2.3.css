@@ -283,3 +283,14 @@ button {
 .review > p {
     font-style: italic;
 }
+
+#flex-moments {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#flex-moments .moments {
+    width: 200px;
+    height: 200px;
+    margin: 0px;
+}
