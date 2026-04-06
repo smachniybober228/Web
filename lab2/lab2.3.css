@@ -310,3 +310,9 @@ button {
     border-radius: 10px;
     box-shadow: var(--box-shadow-1);
 }
+
+#map {
+    background-image: url("../resources/Map.png");
+    height: 400px;
+    width: 400px;
+}
