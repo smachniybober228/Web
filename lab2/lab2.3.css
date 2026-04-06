@@ -294,3 +294,19 @@ button {
     height: 200px;
     margin: 0px;
 }
+
+#questions {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+#questions > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--background-color-1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-1);
+}
