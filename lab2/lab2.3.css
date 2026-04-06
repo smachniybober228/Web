@@ -4,10 +4,24 @@ html, body {
     height: 100%;
 }
 
+:root {
+    --background-color-1: rgb(224, 224, 224);
+    --background-color-2: rgb(245, 245, 245);
+
+    --color-1: black;
+    --color-2: rgb(255, 108, 108);
+    --color-3 : gray;
+    --color-4: white;
+
+    --shadow-color-1: rgb(214, 214, 214);
+    --box-shadow-1: 0px 3px 5px var(--shadow-color-1);
+}
+
 body > div {
     --padding-x: 120px;
     --padding-y: 60px;
-    background-color: rgb(224, 224, 224);
+
+    background-color: var(--background-color-1);
     padding-left: var(--padding-x);
     padding-right: var(--padding-x);
     padding-top: var(--padding-y);
@@ -15,13 +29,13 @@ body > div {
 }
 
 body > div:nth-child(odd){
-    background-color: rgb(245, 245, 245);
+    background-color: var(--background-color-2);
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0; /* обнулили все отступы */
     padding: 0; /* и поля */
-    color: black;
+    color: var(--color-1);
 }
 
 div > h2 {
@@ -35,7 +49,7 @@ body {
 }
 
 p {
-    color: gray;
+    color: var(--color-3);
 }
 
 a {
@@ -47,7 +61,7 @@ a {
     position: fixed;
     left: 0;
     right: 0;
-    background-color: white;
+    background-color: var(--color-4);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -55,7 +69,7 @@ a {
     padding-bottom: 10px;
     padding-left: 100px;
     padding-right: 100px;
-    box-shadow: 0px 3px 5px rgb(214, 214, 214); /* горизонтальное смещение, вертикальное смещение, размытие, цвет */
+    box-shadow: var(--box-shadow-1);
 }
 
 #navigationBar + div {
@@ -63,11 +77,11 @@ a {
 }
 
 .logo > .travel {
-    color: black;
+    color: var(--color-1);
 }
 
 .logo > .world {
-    color: rgb(255, 108, 108);
+    color: var(--color-2);
 }
 
 #navigationBar > div > a {
@@ -91,13 +105,13 @@ a {
 
 #welcome > p,
 #welcome > h1 {
-    color: white;
+    color: var(--color-4);
 }
 
 button {
-    background-color: rgb(255, 108, 108);
+    background-color: var(--color-2);
     border: 0px;
-    color: white;
+    color: var(--color-4);
     border-radius: 20px;
     padding: 11px;
     padding-left: 25px;
@@ -161,7 +175,7 @@ button {
 }
 
 #Edinburg > div > * {
-    color: white;
+    color: var(--color-4);
 }
 
 #Edinburg > div :last-child {
@@ -176,8 +190,8 @@ button {
 
 /* card */
 .card {
-    background-color: white;
-    box-shadow: 0px 3px 10px rgb(214, 214, 214); /* горизонтальное смещение, вертикальное смещение, размытие, цвет */
+    background-color: var(--color-4);
+    box-shadow: var(--box-shadow-1); /* горизонтальное смещение, вертикальное смещение, размытие, цвет */
     flex: 1;
     height: 400px;
 
@@ -234,5 +248,5 @@ button {
 }
 
 #tours > .flex-row > .card > div + div > .flex-row > h4 {
-    color: rgb(255, 108, 108);
+    color: var(--color-2);
 }
