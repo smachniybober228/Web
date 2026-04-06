@@ -212,6 +212,11 @@ button {
 }
 
 /* text-container */
+.scroll-text {
+    flex: 1;
+    overflow-y: auto;
+}
+
 .list-image + div {
     flex: 1;                /* занимает всё оставшееся пространство */
     overflow-y: auto;       /* скролл только для текста */
@@ -249,4 +254,32 @@ button {
 
 #tours > .flex-row > .card > div + div > .flex-row > h4 {
     color: var(--color-2);
+}
+
+.avatar {
+    background-image: url("../resources/Avatar.jpg");
+    height: 40px;
+    width: 40px;
+}
+
+.avatar + div {
+    margin-left: 23px;
+}
+
+.avatar + div > span {
+    color: var(--color-3);
+}
+
+.review {
+    height: 200px;
+    background-color: var(--background-color-1);
+    padding: 20px;
+}
+
+.review > div {
+    align-items: center;
+}
+
+.review > p {
+    font-style: italic;
 }
