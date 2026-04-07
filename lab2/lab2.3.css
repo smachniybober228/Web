@@ -57,7 +57,7 @@ a {
     text-decoration: none;   /* убирает подчёркивание */
 }
 
-#navigationBar {
+#navigation-bar {
     position: fixed;
     left: 0;
     right: 0;
@@ -72,7 +72,7 @@ a {
     box-shadow: var(--box-shadow-1);
 }
 
-#navigationBar + div {
+#navigation-bar + div {
     padding-top: 44px;
 }
 
@@ -88,7 +88,7 @@ a {
     color: var(--color-2);
 }
 
-#navigationBar > div > a {
+#navigation-bar > div > a {
     margin-right: 13px;
 }
 
@@ -128,16 +128,17 @@ button {
     align-items: center;
 }
 
-#myDiv1 {
-    display: flex;
-    flex-direction: row;
-} 
-
-#myDiv1 > div {
+#about > .flex-row > div {
     flex: 1; /* каждый займёт равную долю  */
     margin-left: 15px;
     margin-right: 15px;
 }
+
+/* #myDiv1 > div {
+    flex: 1; 
+    margin-left: 15px;
+    margin-right: 15px;
+} */
 
 .MyImage {
     background-size: cover;
