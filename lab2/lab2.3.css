@@ -76,6 +76,10 @@ a {
     padding-top: 44px;
 }
 
+.logo > * {
+    font-weight: bold;
+}
+
 .logo > .travel {
     color: var(--color-1);
 }
