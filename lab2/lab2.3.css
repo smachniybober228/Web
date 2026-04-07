@@ -316,3 +316,23 @@ button {
     height: 400px;
     width: 400px;
 }
+
+#contacts > .flex-row {
+    justify-content: space-between;
+}
+
+#contacts > .flex-row > div:first-child > div {
+    margin-left: 15px;
+}
+
+#contacts button {
+    margin: 5px;
+    background-color: var(--background-color-2);
+    color: var(--color-1);
+}
+
+#contacts .flex-row > div:first-child button:first-of-type {
+    background-color: var(--color-2);
+    color: var(--color-4);
+    margin-left: 0px;
+}
