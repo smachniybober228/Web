@@ -336,3 +336,13 @@ button {
     color: var(--color-4);
     margin-left: 0px;
 }
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-1);
+    height: 75px;
+    padding: 20px;
+}
