@@ -4,11 +4,15 @@ const slides = document.querySelector(".slides");
 // Определяем количество слайдов
 const slideCount = document.querySelectorAll(".slide").length;
 
+// Находим сам слайдер (нужен для остановки автопрокрутки при наведении)
+const slider = document.querySelector('.slider');
+
 // Находим кнопки «Назад» и «Вперёд»
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
 
 let currentIndex = 0; // Переменная для хранения текущего слайда
+let autoPlayInterval; // Переменная для хранения интервала автопрокрутки
 
 // Функция смены слайдов
 function goToSlide(index) {
@@ -23,6 +27,18 @@ function goToSlide(index) {
     slides.style.transform = `translateX(${-index * 100}%)`; // Сдвигаем контейнер со слайдами
 }
 
+// Функция запуска автоматического перелистывания слайдов
+function startAutoPlay() {
+    autoPlayInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+    }, 3000);
+}
+
+// Функция остановки автопрокрутки
+function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+}
+
 // Добавляем обработчик клика для кнопки «Назад»
 prevButton.addEventListener("click", () => {
     goToSlide(currentIndex - 1);
@@ -33,4 +49,11 @@ nextButton.addEventListener('click', () => {
     goToSlide(currentIndex + 1);
 });
 
-goToSlide(0);
+// Запускаем автопрокрутку при загрузке страницы
+startAutoPlay();
+
+// Останавливаем автопрокрутку, если пользователь навёл курсор на слайдер
+slider.addEventListener('mouseenter', stopAutoPlay);
+
+// Возобновляем автопрокрутку, когда пользователь убирает курсор
+slider.addEventListener('mouseleave', startAutoPlay);
