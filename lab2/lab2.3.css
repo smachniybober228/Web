@@ -298,6 +298,14 @@ div > h2 {
     background-image: url("../resources/Edinburg.jpg"); 
 }
 
+#reykjavik {
+    background-image: url("../resources/Reykjavik.jpg");
+}
+
+#krakow {
+    background-image: url("../resources/Krakow.jpg");
+}
+
 /* ---------- НАПРАВЛЕНИЯ И ТУРЫ (общие карточки) ---------- */
 .tour-footer {
     justify-content: space-between;
