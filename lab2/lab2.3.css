@@ -162,6 +162,8 @@ div > h2 {
     padding-right: 100px;
     box-shadow: var(--box-shadow-1);
     white-space: nowrap;
+
+    z-index: 100;
 }
 
 #navigation-bar > .logo {
@@ -226,17 +228,29 @@ div > h2 {
     padding-bottom: 2px;
 }
 
-#edinburg {
-    background-image: url("../resources/Edinburg.jpg");
+.slider {
+    overflow: hidden; /* Обрезаем всё, что выходит за границы контейнера */
+    position: relative; /* Необходимо для правильного позиционирования кнопок */
+    min-width: 200px;
+}
+
+.slides {
+    display: flex; /* Размещаем слайды в одну линию */
+    transition: transform 0.5s ease-in-out; /* Анимация плавного смещения */
+}
+
+.slide {
     background-blend-mode: multiply;
-    min-width: 150px;
     height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: end;
+
+    width: 100%; /* Занимает всю ширину контейнера */
+    flex-shrink: 0; /* Запрещаем уменьшение размера слайдов */
 }
 
-#edinburg > div {
+.slide > div {
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
@@ -247,12 +261,41 @@ div > h2 {
     border-bottom-right-radius: inherit;
 }
 
-#edinburg > div > * {
+.slide > div > * {
     color: var(--color-4);
 }
 
-#edinburg > div :last-child {
+.slide > div :last-child {
     margin-bottom: 0px;
+}
+
+/* Кнопки «Назад» и «Вперёд» */
+.prev, .next {
+    position: absolute; /* Позволяет располагать кнопки поверх слайдов */
+    top: 50%; /* Размещаем по вертикали по центру */
+    transform: translateY(-50%); /* Сдвигаем кнопки вверх на половину их высоты */
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон кнопок */
+    color: white; /* Белый цвет текста */
+    border: none; /* Убираем границы */
+    padding: 10px; /* Отступы внутри кнопки */
+    cursor: pointer; /* Изменяем курсор на указатель */
+    font-size: 18px; /* Размер шрифта */
+    font-weight: bold; /* Делаем текст жирным */
+    z-index: 2; /* Размещаем кнопки выше всех элементов */
+}
+
+/* Позиционируем кнопку «Назад» слева */
+.prev {
+    left: 10px;
+}
+
+/* Позиционируем кнопку «Вперёд» справа */
+.next {
+    right: 10px;
+}
+
+#edinburg {
+    background-image: url("../resources/Edinburg.jpg"); 
 }
 
 /* ---------- НАПРАВЛЕНИЯ И ТУРЫ (общие карточки) ---------- */

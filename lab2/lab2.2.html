@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <link rel="stylesheet" type="text/css" href="lab2.3.css">
+    <script defer src="carousel.js"></script>
     <title>Заголовок</title>
     <meta charset="UTF-8">
 </head>
@@ -41,11 +42,30 @@
     </div>
     <div id="special-offer">
         <h2>Наши лучшие предложения</h2>
-        <div class="image-cover" id="edinburg">
-            <div>
-                <h3>Эдинбург, Шотландия</h3>
-                <p>Столица Шотландии не оставит равнодушными любителей средневековья</p>
+        <div class="slider">
+            <div class="slides">
+                <div class="image-cover slide" id="edinburg">
+                    <div>
+                        <h3>Эдинбург, Шотландия</h3>
+                        <p>Столица Шотландии не оставит равнодушными любителей средневековья</p>
+                    </div>
+                </div>
+                <div class="image-cover slide">
+                    <div>
+                        <h3>Специальное предложение 2</h3>
+                        <p>Текст специального предложения 2</p>
+                    </div>
+                </div>
+                <div class="image-cover slide">
+                    <div>
+                        <h3>Специальное предложение 3</h3>
+                        <p>Текст специального предложения 3</p>
+                    </div>
+                </div>
             </div>
+
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
         </div>
     </div>
     <div id="directions">
