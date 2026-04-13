@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="icon" href="icon.png">
     <link rel="stylesheet" type="text/css" href="lab2.3.css">
     <title>Заголовок</title>
     <meta charset="UTF-8">
 </head>
 <body>
-    <div id="navigation-bar">
+    <div class="flex-row" id="navigation-bar">
         <span class="logo">
             <span class="travel">Travel</span><!--
                 --><span class="world">World</span>
@@ -37,14 +36,12 @@
                 интересам, бюджету и предпочтениям.</p>
                 <button>Связаться с нами</button>
             </div>
-
-            <div class="MyImage" id="Kolmar"></div>
-            <!-- <img src="../backimage.jpg" class="MyImage"/> -->
+            <div class="image-cover" id="kolmar"></div>
         </div>
     </div>
-    <div id="best">
+    <div id="special-offer">
         <h2>Наши лучшие предложения</h2>
-        <div class="MyImage" id="Edinburg">
+        <div class="image-cover" id="edinburg">
             <div>
                 <h3>Эдинбург, Шотландия</h3>
                 <p>Столица Шотландии не оставит равнодушными любителей средневековья</p>
@@ -55,24 +52,24 @@
         <h2>Популярные направления</h2>
         <div class="flex-row">
             <div class="card">
-                <div class="MyImage list-image" id="budapesht"></div>
-                <div>
+                <div class="image-cover card-image" id="budapesht"></div>
+                <div class="scroll-text">
                     <h3>Будапешт, Венгрия</h3>
                     <p>Будапешт - это мосты, дворцы и термальные купальни, многие из которых расположились в фантастически красивых зданиях (взять хотя бы Геллерт или Сечени).</p>
                     <h4>от $1200</h4>
                 </div>
             </div>
             <div class="card">
-                <div class="MyImage list-image" id="paris"></div>
-                <div>
+                <div class="image-cover card-image" id="paris"></div>
+                <div class="scroll-text">
                     <h3>Париж, Франция</h3>
                     <p>Город любви, искусства и изысканной кухни. Эйфелева башня, Лувр и уютные кафе.</p>
                     <h4>от $950</h4>
                 </div>
             </div>
             <div class="card">
-                <div class="MyImage list-image" id="new-york"></div>
-                <div>
+                <div class="image-cover card-image" id="new-york"></div>
+                <div class="scroll-text">
                     <h3>Нью-Йорк, США</h3>
                     <p>Город, который никогда не спит. Таймс-сквер, Центральный парк и Статуя Свободы.</p>
                     <h4>от $1500</h4>
@@ -84,33 +81,33 @@
         <h2>Наши туры</h2>
         <div class="flex-row">
             <div class="card">
-                <div class="MyImage list-image" id="europe"></div>
-                <div>
+                <div class="image-cover card-image" id="europe"></div>
+                <div class="scroll-text">
                     <h3>Гранд тур по Европе</h3>
                     <p>14-дневный тур по 5 странам: Франция, Германия, Австрия, Италия и Швейцария. Включены все переезды, проживание в отелях 4* и экскурсии с профессиональными гидами.</p>
-                    <div class="flex-row">
+                    <div class="flex-row tour-footer">
                         <h4>$2500</h4>
                         <button>Забронировать</button>
                     </div>
                 </div>
             </div>
             <div class="card">
-                <div class="MyImage list-image" id="rio"></div>
-                <div>
+                <div class="image-cover card-image" id="rio"></div>
+                <div class="scroll-text">
                     <h3>Рио-де-Жанейро, Бразилия</h3>
                     <p>Скалистые горы, зелёные холмы и живописные лагуны создают захватывающие панорамы, которые хочется запомнить и фотографировать.</p>
-                    <div class="flex-row">
+                    <div class="flex-row tour-footer">
                         <h4>$3200</h4>
                         <button>Забронировать</button>
                     </div>
                 </div>
             </div>
             <div class="card">
-                <div class="MyImage list-image" id="japan"></div>
-                <div>
+                <div class="image-cover card-image" id="japan"></div>
+                <div class="scroll-text">
                     <h3>Япония: традиции и современность</h3>
                     <p>12-дневный тур по Токио, Киото, Осака и Хиросима. Чайные церемонии, самурайские замки, суши-мастер-классы и высокоскоростные поезда.</p>
-                    <div class="flex-row">
+                    <div class="flex-row tour-footer">
                         <h4>$2800</h4>
                         <button>Забронировать</button>
                     </div>
@@ -123,17 +120,17 @@
         <div class="flex-row">
             <div class="card review">
                 <div class="flex-row">
-                    <div class="MyImage avatar"></div>
+                    <div class="image-cover avatar"></div>
                     <div>
                         <h3>Мария Иванова</h3>
                         <span>Тур по Италии, май 2025</span>
                     </div>
                 </div>
-                <p class="scroll-text">"Это было самое потрясающее путешествие в моей жизни! Все было организовано на высшем уровне - трансферы, экскурсии, отели. Особено понравился гид в Риме, который показал нам город с неожиданной стороны."</p>
+                <p class="scroll-text">"Это было самое потрясающее путешествие в моей жизни! Все было организовано на высшем уровне - трансферы, экскурсии, отели. Особенно понравился гид в Риме, который показал нам город с неожиданной стороны."</p>
             </div> 
             <div class="card review">
                 <div class="flex-row">
-                    <div class="MyImage avatar"></div>
+                    <div class="image-cover avatar"></div>
                     <div>
                         <h3>Алексей Петров</h3>
                         <span>Отдых на Мальдивах, январь 2025</span>
@@ -143,7 +140,7 @@
             </div>
             <div class="card review">
                 <div class="flex-row">
-                    <div class="MyImage avatar"></div>
+                    <div class="image-cover avatar"></div>
                     <div>
                         <h3>Елена Смирнова</h3>
                         <span>Экскурсионный тур по Японии, апрель 2025</span>
@@ -155,35 +152,35 @@
     </div>
     <div>
         <h2>Наши моменты</h2>
-        <div class="flex-row" id="flex-moments">
-            <div class="MyImage avatar moments"></div>
-            <div class="MyImage avatar moments"></div>
-            <div class="MyImage avatar moments"></div>
-            <div class="MyImage avatar moments"></div>
-            <div class="MyImage avatar moments"></div>
-            <div class="MyImage avatar moments"></div>
+        <div class="flex-row" id="gallery">
+            <div class="image-cover avatar moments"></div>
+            <div class="image-cover avatar moments"></div>
+            <div class="image-cover avatar moments"></div>
+            <div class="image-cover avatar moments"></div>
+            <div class="image-cover avatar moments"></div>
+            <div class="image-cover avatar moments"></div>
         </div>
     </div>
     <div>
         <h2>Часто задаваемые вопросы</h2>
-        <div id="questions">
-            <div>
+        <div id="faq">
+            <div class="flex-row">
                 <h3>Как забронировать тур?</h3>
                 <h3>+</h3>
             </div>
-            <div>
+            <div class="flex-row">
                 <h3>Какие документы нужны для путешествия?</h3>
                 <h3>+</h3>
             </div>
-            <div>
+            <div class="flex-row">
                 <h3>Есть ли у вас страховка?</h3>
                 <h3>+</h3>
             </div>
-            <div>
+            <div class="flex-row">
                 <h3>Можно ли изменить дату поездки после бронирования?</h3>
                 <h3>+</h3>
             </div>
-            <div>
+            <div class="flex-row">
                 <h3>Что делать, если тур отменяется?</h3>
                 <h3>+</h3>
             </div>
@@ -194,7 +191,7 @@
         <div class="flex-row">
             <div>
                 <h3>Свяжитесь с нами</h3>
-                <div>
+                <div id="contact-details">
                     <p>г. Москва, ул. Тверская, д. 10, офис 45</p>
                     <p>+7 (495) 123-45-67</p>
                     <p>info@travelworld.ru</p>
@@ -208,7 +205,7 @@
                 <button>Америка</button>
                 <button>Африка</button>
             </div>
-            <div class="MyImage" id="map"></div>
+            <div class="image-cover" id="map"></div>
         </div>
     </div>
     <footer>
@@ -216,7 +213,7 @@
             <span class="travel">Travel</span><!--
             --><span class="world">World</span>
         </span>
-        <p>&copy 2025 TravelWorld. Все права защищены.</p>
+        <p>&copy; 2025 TravelWorld. Все права защищены.</p>
     </footer>
 </body>
 </html>
