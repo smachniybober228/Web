@@ -4,6 +4,10 @@ html, body {
     height: 100%;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --background-color-1: rgb(224, 224, 224);
     --background-color-2: rgb(245, 245, 245);
@@ -204,6 +208,8 @@ button {
     flex-direction: column;
 
     border-radius: 10px;
+
+    min-width: 260px;
 }
 
 .card + .card {
@@ -259,12 +265,14 @@ button {
 
 #tours > .flex-row > .card > div + div > .flex-row > h4 {
     color: var(--color-2);
+    margin-right: 15px;
 }
 
 .avatar {
     background-image: url("../resources/Avatar.jpg");
     height: 40px;
     width: 40px;
+    flex-shrink: 0;
 }
 
 .avatar + div {
@@ -276,12 +284,13 @@ button {
 }
 
 .review {
+    padding: 20px;
+
     height: 200px;
     background-color: var(--background-color-1);
-    padding: 20px;
 }
 
-.review > div {
+.review > .flex-row {
     align-items: center;
 }
 
@@ -348,6 +357,9 @@ footer {
     justify-content: space-between;
     align-items: center;
     background-color: var(--color-1);
-    height: 75px;
     padding: 20px;
+}
+
+footer > p {
+    margin-bottom: 0px;
 }
