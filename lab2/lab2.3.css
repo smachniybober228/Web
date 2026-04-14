@@ -55,6 +55,7 @@ button {
     padding: 11px;
     padding-left: 25px;
     padding-right: 25px;
+    cursor: pointer;
 }
 
 /* ---------- ОБЩИЕ БЛОКИ (СЕКЦИИ) ---------- */
@@ -87,6 +88,12 @@ div > h2 {
     background-position: center;
     border-radius: 10px;
 }
+
+/* .highlight {
+    stroke: red !important;
+    stroke-width: 3px !important;
+    fill: rgba(255, 0, 0, 0.2) !important;
+} */
 
 /* ---------- КОМПОНЕНТЫ ---------- */
 .scroll-text {
@@ -232,6 +239,7 @@ div > h2 {
     overflow: hidden; /* Обрезаем всё, что выходит за границы контейнера */
     position: relative; /* Необходимо для правильного позиционирования кнопок */
     min-width: 200px;
+    border-radius: 10px;
 }
 
 .slides {
