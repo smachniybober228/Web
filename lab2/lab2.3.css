@@ -82,18 +82,44 @@ div > h2 {
     flex-direction: row;
 }
 
-.image-cover {
+/* .image-cover {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 10px;
+
+    transition: transform 0.3s ease-in-out;
+} */
+
+/* .image-cover:hover {
+    transform: scale(1.05);
+} */
+
+.image-bg-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
-/* .highlight {
-    stroke: red !important;
-    stroke-width: 3px !important;
-    fill: rgba(255, 0, 0, 0.2) !important;
-} */
+.image-bg-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 0.3s ease;
+}
+
+.image-bg-container img:hover {
+    transform: scale(1.05);
+}
+
+.image-bg-container > *:not(img) {
+    position: relative;
+    z-index: 1;
+}
 
 /* ---------- КОМПОНЕНТЫ ---------- */
 .scroll-text {
@@ -112,6 +138,7 @@ div > h2 {
     min-width: 260px;
     height: 400px;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .card + .card {
@@ -133,6 +160,12 @@ div > h2 {
     height: 40px;
     width: 40px;
     flex-shrink: 0;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 50%;
 }
 
 .avatar + div {
@@ -187,12 +220,6 @@ div > h2 {
 
 /* ---------- WELCOME ---------- */
 #welcome {
-    background-image: url("../resources/Spain.jpg");
-    background-color: rgba(0, 0, 0, 0.6);
-    background-blend-mode: multiply;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -200,6 +227,11 @@ div > h2 {
     min-width: 550px;
     height: 300px;
     padding: 0px;
+    border-radius: 0px;
+}
+
+#welcome img {
+    filter: brightness(0.4);
 }
 
 #welcome > p,
@@ -222,10 +254,8 @@ div > h2 {
     margin-left: 15px;
 }
 
-#kolmar {
-    background-image: url("../resources/Kolmar.jpg");
-    background-color: rgba(0, 0, 0, 0.2);
-    background-blend-mode: multiply;
+#about img {
+    filter: brightness(0.9);
 }
 
 /* ---------- SPECIAL OFFER ---------- */
@@ -236,29 +266,31 @@ div > h2 {
 }
 
 .slider {
-    overflow: hidden; /* Обрезаем всё, что выходит за границы контейнера */
-    position: relative; /* Необходимо для правильного позиционирования кнопок */
+    overflow: hidden;
+    position: relative;
     min-width: 200px;
     border-radius: 10px;
 }
 
 .slides {
-    display: flex; /* Размещаем слайды в одну линию */
-    transition: transform 0.5s ease-in-out; /* Анимация плавного смещения */
+    display: flex;
+    transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-    background-blend-mode: multiply;
     height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: end;
-
-    width: 100%; /* Занимает всю ширину контейнера */
-    flex-shrink: 0; /* Запрещаем уменьшение размера слайдов */
+    width: 100%;
+    flex-shrink: 0;
+    position: relative;
 }
 
+/* Контент поверх фона */
 .slide > div {
+    position: relative;
+    z-index: 1;
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
@@ -277,42 +309,22 @@ div > h2 {
     margin-bottom: 0px;
 }
 
-/* Кнопки «Назад» и «Вперёд» */
 .prev, .next {
-    position: absolute; /* Позволяет располагать кнопки поверх слайдов */
-    top: 50%; /* Размещаем по вертикали по центру */
-    transform: translateY(-50%); /* Сдвигаем кнопки вверх на половину их высоты */
-    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон кнопок */
-    color: white; /* Белый цвет текста */
-    border: none; /* Убираем границы */
-    padding: 10px; /* Отступы внутри кнопки */
-    cursor: pointer; /* Изменяем курсор на указатель */
-    font-size: 18px; /* Размер шрифта */
-    font-weight: bold; /* Делаем текст жирным */
-    z-index: 2; /* Размещаем кнопки выше всех элементов */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2;
 }
 
-/* Позиционируем кнопку «Назад» слева */
-.prev {
-    left: 10px;
-}
-
-/* Позиционируем кнопку «Вперёд» справа */
-.next {
-    right: 10px;
-}
-
-#edinburg {
-    background-image: url("../resources/Edinburg.jpg"); 
-}
-
-#reykjavik {
-    background-image: url("../resources/Reykjavik.jpg");
-}
-
-#krakow {
-    background-image: url("../resources/Krakow.jpg");
-}
+.prev { left: 10px; }
+.next { right: 10px; }
 
 /* ---------- НАПРАВЛЕНИЯ И ТУРЫ (общие карточки) ---------- */
 .tour-footer {
@@ -324,30 +336,6 @@ div > h2 {
 .tour-footer > h4 {
     color: var(--color-2);
     margin-right: 15px;
-}
-
-#budapesht {
-    background-image: url("../resources/Budapesht.jpg");
-}
-
-#paris {
-    background-image: url("../resources/Paris.jpg");
-}
-
-#new-york {
-    background-image: url("../resources/New\ York.jpg");
-}
-
-#europe {
-    background-image: url("../resources/Europe.jpg");
-}
-
-#rio {
-    background-image: url("../resources/Rio.jpg");
-}
-
-#japan {
-    background-image: url("../resources/Japan.jpg");
 }
 
 /* ---------- ОТЗЫВЫ ---------- */
@@ -427,8 +415,8 @@ div > h2 {
 }
 
 #map-container {
-    height: 400px;
-    width: 400px;
+    height: 420px;
+    width: 500px;
 }
 
 /* ---------- ФУТЕР ---------- */

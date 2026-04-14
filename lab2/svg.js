@@ -116,5 +116,7 @@ fetch('../resources/Map.svg') // путь может быть относител
         if (btnAsia) btnAsia.addEventListener('click', () => btnFunc(2, asia));
         if (btnAmerica) btnAmerica.addEventListener('click', () => btnFunc(3, america));
         if (btnAfrica) btnAfrica.addEventListener('click', () => btnFunc(4, africa));
+
+        highlightContinent(europe);
     })
     .catch(err => console.error('Ошибка загрузки SVG:', err));
