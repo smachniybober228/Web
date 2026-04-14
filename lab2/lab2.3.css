@@ -410,20 +410,23 @@ div > h2 {
     margin-left: 15px;
 }
 
+#contact-details + .flex-row {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
 #contacts button {
-    margin: 5px;
     background-color: var(--background-color-2);
     color: var(--color-1);
+    transition: all 0.2s ease;
 }
 
-#contacts > .flex-row > div:first-child button:first-of-type {
+#contacts button.active-button {
     background-color: var(--color-2);
     color: var(--color-4);
-    margin-left: 0px;
 }
 
-#map {
-    background-image: url("../resources/Map.png");
+#map-container {
     height: 400px;
     width: 400px;
 }

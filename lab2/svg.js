@@ -42,6 +42,7 @@ const africa = [
 // ---------- ЗАГРУЗКА SVG ЧЕРЕЗ FETCH ----------
 const mapContainer = document.getElementById('map-container');
 let svgDoc = null; // здесь будет корневой элемент <svg>
+let btnIndex = 1; // 1 - europe, 2 - asia, 3 - america, 4 - africa
 
 function highlightContinent(countryIds) {
     if (!svgDoc) return;
@@ -70,6 +71,21 @@ function highlightContinent(countryIds) {
     });
 }
 
+function btnFunc(newIndex, countryIds) {
+    changeBtn(newIndex);
+    highlightContinent(countryIds);
+}
+
+function changeBtn(newIndex) {
+    if (newIndex !== btnIndex) {
+        const oldBtn = document.querySelector(`#contacts button:nth-of-type(${btnIndex})`);
+        const newBtn = document.querySelector(`#contacts button:nth-of-type(${newIndex})`);
+        oldBtn.classList.remove('active-button');
+        newBtn.classList.add('active-button');
+        btnIndex = newIndex;
+    }
+}
+
 // Загружаем SVG
 fetch('../resources/Map.svg') // путь может быть относительным к HTML
     .then(response => {
@@ -81,9 +97,14 @@ fetch('../resources/Map.svg') // путь может быть относител
         const svgElement = mapContainer.querySelector('svg');
         if (!svgElement) throw new Error('В загруженном файле нет <svg>');
         svgDoc = svgElement;
-        // Установим атрибуты ширины/высоты, если нужно
-        svgDoc.setAttribute('width', '500');
-        svgDoc.setAttribute('height', '420');
+
+        // Устанавливаем размеры карты
+        const style = getComputedStyle(mapContainer);
+        const width = parseInt(style.width, 10);
+        const height = parseInt(style.height, 10);
+        svgDoc.setAttribute('width', width);
+        svgDoc.setAttribute('height', height);
+
         console.log('SVG успешно загружен через fetch');
         
         // Назначаем обработчики кнопок (один раз)
@@ -91,9 +112,9 @@ fetch('../resources/Map.svg') // путь может быть относител
         const btnAsia = document.querySelector('#contacts button:nth-of-type(2)');
         const btnAmerica = document.querySelector('#contacts button:nth-of-type(3)');
         const btnAfrica = document.querySelector('#contacts button:nth-of-type(4)');
-        if (btnEurope) btnEurope.addEventListener('click', () => highlightContinent(europe));
-        if (btnAsia) btnAsia.addEventListener('click', () => highlightContinent(asia));
-        if (btnAmerica) btnAmerica.addEventListener('click', () => highlightContinent(america));
-        if (btnAfrica) btnAfrica.addEventListener('click', () => highlightContinent(africa));
+        if (btnEurope) btnEurope.addEventListener('click', () => btnFunc(1, europe));
+        if (btnAsia) btnAsia.addEventListener('click', () => btnFunc(2, asia));
+        if (btnAmerica) btnAmerica.addEventListener('click', () => btnFunc(3, america));
+        if (btnAfrica) btnAfrica.addEventListener('click', () => btnFunc(4, africa));
     })
     .catch(err => console.error('Ошибка загрузки SVG:', err));
