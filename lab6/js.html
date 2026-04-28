@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <script>
+    function one(arr = [1, 2, 3, 4, 5]) 
+    {
+        let maxNumb = 0;
+        for (let i = 0;  i < arr.length - 1; i++){
+            for (let j = i + 1; j < arr.length; j++) {
+                if (Math.abs(arr[i] - arr[j]) > maxNumb) {
+                    maxNumb = Math.abs(arr[i] - arr[j]);
+                }
+            }
+        }
+        return maxNumb;
+    }
+
+    function two(arr = [1, 1, 1, 2, 3, 5, 9, 9]) {
+        const uniqie = [...new Set(arr)];
+        return uniqie;
+    }
+    
+    function three(arr = [
+            {id: 1, idDone: true}, 
+            {id: 2, idDone: false},
+            {id: 3, idDone: true}
+        ]) {
+        const resultArr = arr.filter(item => item.idDone === true);
+        resultArr.forEach(element => {
+            alert(`id: ${element.id}, idDone: ${element.idDone}`);
+        });
+    }
+    
+    function four(arr = [1, 4, 6, 3, 2], numb = 2) {
+        return arr.filter(item => item > numb);
+    }
+
+    function five(arr = [1, 4, [34, 1, 20], [6, [6, 12, 8], 6]]){
+        const resultArr = arr.concat(...arr);
+        return resultArr;
+    }
+
+    function six(arr = [-7, 12, 4, 6, -4, -12, 0]){
+        let result = 0;
+        for (let i = 0; i < arr.length - 1; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] + arr[j] === 0){
+                    result += 1;
+                    delete arr[i];
+                    delete arr[j];
+                }
+            }
+        }
+        return result;
+    }
+
+    function six_2(arr) {
+        let result = 0;
+        for (let i = 0; i < arr.length - 2; i++) {
+            for (let j = i + 1; j < arr.length - 1; j++) {
+                for (let w = j + 1; w < arr.length; w++) {
+                    if (arr[i] + arr[j] + arr[w] === 0){
+                        result += 1;
+                        delete arr[i];
+                        delete arr[j];
+                        delete arr[w];
+                    }
+                }
+            }
+        }
+        return result;
+    }
+    alert(one());
+    alert(two());
+    three();
+    alert(four());
+    alert(five());
+    alert(six());
+    alert(six_2([1, 2, -3, 4, -1, -2]));
+    </script>
+</head>
+<body></body>
