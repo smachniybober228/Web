@@ -1,3 +1,11 @@
+// ---------- НАСТРОЙКИ КОНТИНЕНТОВ ----------
+const continentSettings = {
+    europe:  { radius: 2000000, zoom: 4 },
+    asia:    { radius: 3500000, zoom: 3 },
+    america: { radius: 4000000, zoom: 3 },
+    africa:  { radius: 3000000, zoom: 3 }
+};
+
 // ---------- ИНИЦИАЛИЗАЦИЯ КАРТЫ ----------
 const map = L.map('map').setView([20, 0], 2);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -5,26 +13,30 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 let currentCircle = null;
-let currentButton = null;      // активная кнопка (DOM-элемент)
+let currentButton = null;
 
 // ---------- ФУНКЦИЯ ПОДСВЕТКИ КНОПКИ ----------
 function setActiveButton(button) {
-    if (currentButton) {
-        currentButton.classList.remove('active-button');
-    }
+    if (currentButton) currentButton.classList.remove('active-button');
     button.classList.add('active-button');
     currentButton = button;
 }
 
 // ---------- ФУНКЦИЯ РИСОВАНИЯ КРУГА ----------
-function showContinent(lat, lon, radius, color = 'red') {
+function showContinent(lat, lon, radius = 1500000, zoom = 4, color = 'red') {
     if (currentCircle) map.removeLayer(currentCircle);
     currentCircle = L.circle([lat, lon], { radius, color }).addTo(map);
-    map.setView([lat, lon], 4);
+    map.setView([lat, lon], zoom);
 }
 
-// ---------- ЗАПРОС К API С ОБРАБОТКОЙ ОШИБОК ----------
-function fetchAndShow(continentName, radius = 1500000) {
+// ---------- ЗАПРОС К API ----------
+function fetchAndShow(continentName) {
+    const settings = continentSettings[continentName];
+    if (!settings) {
+        console.error(`Нет настроек для континента ${continentName}`);
+        return;
+    }
+    const { radius, zoom } = settings;
     const url = `https://nominatim.openstreetmap.org/search?q=${continentName}&format=json`;
     fetch(url)
         .then(response => response.json())
@@ -32,7 +44,7 @@ function fetchAndShow(continentName, radius = 1500000) {
             if (data && data[0]) {
                 const lat = data[0].lat;
                 const lon = data[0].lon;
-                showContinent(lat, lon, radius);
+                showContinent(lat, lon, radius, zoom);
             } else {
                 console.warn(`Координаты для ${continentName} не найдены`);
             }
@@ -42,35 +54,30 @@ function fetchAndShow(continentName, radius = 1500000) {
         });
 }
 
-// ---------- ОБРАБОТЧИК ДЛЯ КНОПКИ ----------
+// ---------- ОБРАБОТЧИК КЛИКА ----------
 function onButtonClick(button, continentName) {
     setActiveButton(button);
     fetchAndShow(continentName);
 }
 
-// ---------- ИНИЦИАЛИЗАЦИЯ: НАХОДИМ ВСЕ КНОПКИ И НАЗНАЧАЕМ СОБЫТИЯ ----------
+// ---------- ИНИЦИАЛИЗАЦИЯ КНОПОК ----------
 const buttons = document.querySelectorAll('#contacts .flex-row:last-child button');
-let firstButton = null;   // для активации по умолчанию
+let firstButton = null;
 
 buttons.forEach(button => {
     const continent = button.getAttribute('data-continent');
     if (!continent) return;
-
-    if (continent === 'europe') {
-        firstButton = button;   // запоминаем кнопку Европы
-    }
-
+    if (continent === 'europe') firstButton = button;
     button.addEventListener('click', () => onButtonClick(button, continent));
 });
 
-// Если кнопка Европа найдена – активируем её и загружаем карту
+// Активируем первую кнопку (Европа) и показываем её на карте
 if (firstButton) {
-    onButtonClick(firstButton, firstButton.getAttribute('data-continent'));
-} else {
-    // fallback: активируем первую кнопку, если Европа не найдена
-    if (buttons.length) {
-        const fallbackContinent = buttons[0].getAttribute('data-continent');
-        setActiveButton(buttons[0]);
-        if (fallbackContinent) fetchAndShow(fallbackContinent);
-    }
+    setActiveButton(firstButton);
+    fetchAndShow('europe');
+} else if (buttons.length) {
+    // fallback: если кнопка europe не найдена, активируем первую
+    const fallbackContinent = buttons[0].getAttribute('data-continent');
+    setActiveButton(buttons[0]);
+    if (fallbackContinent) fetchAndShow(fallbackContinent);
 }
