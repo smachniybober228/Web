@@ -1,5 +1,9 @@
 function showContinent(lat, lon, radius, color = "red") {
-    L.circle([lat, lon], { radius: radius }).addTo(map);
+    if (currentCircle) {
+        map.removeLayer(currentCircle);
+    }
+    currentCircle = L.circle([lat, lon], { radius: radius, color: color }).addTo(map);
+    map.setView([lat, lon], 4); // приближаем к континенту
 }
 
 function fetchAndShow(continentName, radius = 1) {
@@ -22,6 +26,8 @@ function fetchAndShow(continentName, radius = 1) {
 }
 
 const map = L.map('map').setView([20, 0], 2);
+
+let currentCircle = null;
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
