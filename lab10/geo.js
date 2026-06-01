@@ -50,17 +50,13 @@ async function getCityByCoords(lat, lon) {
     return cityName;
 }
 
-async function getCurrentTemp(lat, lon) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&timezone=auto`;
-    const response = await fetch(url);
-    const data = await response.json();
-    // Получаем текущее время (в часовом поясе пользователя)
-    const now = new Date();
-    // Приводим к формату ISO без минут и секунд (например, "2025-06-01T15:00")
-    const currentHour = now.toISOString().slice(0, 13) + ':00';
-    const index = data.hourly.time.indexOf(currentHour);
-    if (index !== -1) return data.hourly.temperature_2m[index];
-    else return data.hourly.temperature_2m[0];
+async function showForecast(lat, lon){ 
+    const city = await getCityByCoords(lat, lon);
+    changeCity(city);
+    weekDays = await getWeeklyForecast(lat, lon);
+    renderCurrentDay();
+    updateDots();
+    setupCarousel();
 }
 
 async function getWeeklyForecast(lat, lon) {
@@ -74,7 +70,7 @@ async function getWeeklyForecast(lat, lon) {
     }));
 }
 
-// --- Карусель (один элемент, точки, стрелки) ---
+// --- Карусель ---
 let weekDays = [];
 let currentIndex = 0;
 
@@ -132,14 +128,7 @@ function setupCarousel() {
 
 getCurrentGeolocation()
     .then(async coords => {
-        const city = await getCityByCoords(coords.lat, coords.lon);
-        changeCity(city);
-        const currentTemp = await getCurrentTemp(lat, lon);
-        showTemperature(currentTemp);
-        weekDays = await getWeeklyForecast(lat, lon);
-        renderCurrentDay();
-        updateDots();
-        setupCarousel();
+        showForecast(coords.lat, coords.lon);
     })
     .catch(async err => 
     {
@@ -157,13 +146,6 @@ getCurrentGeolocation()
         }
         console.log("Использован город по умолчанию.")
 
-        const city = await getCityByCoords(DefaultLat, DefaultLon);
-        changeCity(city);
-        const currentTemp = await getCurrentTemp(DefaultLat, DefaultLon);
-        showTemperature(currentTemp);
-        weekDays = await getWeeklyForecast(DefaultLat, DefaultLon);
-        renderCurrentDay();
-        updateDots();
-        setupCarousel();
+        showForecast(DefaultLat, DefaultLon);
     }
 )
