@@ -224,3 +224,8 @@ ol:empty::before {
 .CustomCheckbox:checked + .Checkmark::after {
     display: block;
 }
+
+.todo-footer {
+    width: 50%;
+    align-self: center;
+}

@@ -1,4 +1,5 @@
 let tasks = [];
+let currentFilter = 'all'; // 'all', 'active', 'completed'
 
 function initTasks() {
     const stored = localStorage.getItem("todoList");
@@ -17,19 +18,27 @@ function initTasks() {
     renderTodoList();
 }
 
+// Фильтрует задачи по текущему фильтру
+function getFilteredTasks() {
+    if (currentFilter === 'active') return tasks.filter(t => !t.completed);
+    if (currentFilter === 'completed') return tasks.filter(t => t.completed);
+    return tasks; // 'all'
+}
+
 const saveTasksToStorage = () => localStorage.setItem('todoList', JSON.stringify(tasks));
 
 // Перерисовка списка
 function renderTodoList() {
     const todoList = document.getElementById('TodoList');
     todoList.innerHTML = '';
-    tasks.forEach((task, index) => {
-        const li = createTaskElement(task, index); // создаём DOM-элемент задачи
+    const filteredTasks = getFilteredTasks();
+    filteredTasks.forEach((task, _) => {
+        const li = createTaskElement(task); // создаём DOM-элемент задачи
         todoList.appendChild(li);
     });
 }
 
-function createTaskElement(task, index) {
+function createTaskElement(task) {
     // Создаём элементы
     const li = document.createElement('li');
     
@@ -41,7 +50,7 @@ function createTaskElement(task, index) {
     checkbox.className = 'CustomCheckbox';
     checkbox.checked = task.completed;
     checkbox.addEventListener("click", function() {
-        tasks[index].completed = !tasks[index].completed;
+        task.completed = !task.completed;
         saveTasksToStorage();
         renderTodoList();
     });
@@ -109,4 +118,15 @@ createBtn.addEventListener("click", function() {
     clearTextField();
 });
 
+function setupFilterButtons() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentFilter = btn.getAttribute('data-filter');
+            renderTodoList();
+        });
+    });
+}
+
 initTasks();
+setupFilterButtons();
