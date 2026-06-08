@@ -1,5 +1,6 @@
 let tasks = [];
 let currentFilter = 'all'; // 'all', 'active', 'completed'
+let currentSort = "A-Z" // 'A-Z', 'Z-A'
 
 function initTasks() {
     const stored = localStorage.getItem("todoList");
@@ -16,6 +17,14 @@ function initTasks() {
         saveTasksToStorage();
     }
     renderTodoList();
+}
+
+function initSorting() {
+    const savedSort = localStorage.getItem('todoSort');
+    if (savedSort && (savedSort === 'A-Z' || savedSort === 'Z-A')) {
+        currentSort = savedSort;
+    }
+    sortTasks();
 }
 
 // Фильтрует задачи по текущему фильтру
@@ -126,10 +135,47 @@ function setupFilterButtons() {
     updateFilterButtons();
 }
 
-function setupSortButton() {
+function setupSorting() {
     const btn = document.getElementById("sort-btn");
-    btn.addEventListener("click", () => {
-        
+    const sortingOptions = document.getElementById('sorting-options');
+
+    // Изначально скрываем блок с опциями
+    sortingOptions.style.display = 'none';
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation(); // чтобы клик не всплывал и не закрывал меню сразу
+        if (sortingOptions.style.display === 'none') {
+            sortingOptions.style.display = 'flex'; // или 'block', но у вас flex
+        } else {
+            sortingOptions.style.display = 'none';
+        }
+    });
+
+    // Закрываем меню при клике вне его
+    document.addEventListener('click', (e) => {
+        if (!btn.contains(e.target) && !sortingOptions.contains(e.target)) {
+            sortingOptions.style.display = 'none';
+        }
+    });
+    
+    // Скрываем после выбора пункта
+    document.querySelectorAll('#sorting-options a').forEach(link => {
+        link.addEventListener('click', () => {
+            const sortDirection = link.getAttribute("data-sort");
+            if (currentSort !== sortDirection) {
+                currentSort = sortDirection;
+                localStorage.setItem("todoSort", currentSort);
+                saveAndRender();
+            }
+            sortingOptions.style.display = 'none';
+        });
+    });
+}
+
+function sortTasks() {
+    tasks.sort((a, b) => {
+        const comparison = a.task.localeCompare(b.task, 'ru');
+        return currentSort === 'A-Z' ? comparison : -comparison;
     });
 }
 
@@ -148,11 +194,13 @@ function updateFilterButtons() {
 }
 
 function saveAndRender() {
+    sortTasks();
     saveTasksToStorage();
     renderTodoList();
     updateFilterButtons();
 }
 
 initTasks();
+initSorting();
 setupFilterButtons();
-
+setupSorting();

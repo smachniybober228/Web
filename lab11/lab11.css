@@ -23,6 +23,10 @@ main {
     justify-content: center;
 }
 
+button, a {
+    cursor: pointer;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 .MyH {
     color: white;
@@ -65,8 +69,6 @@ main {
     height: 39px;
     font-family: inherit;
     font-size: inherit;
-
-    cursor: pointer;
 }
 
 #createButton {
@@ -232,7 +234,6 @@ ol li:hover .MyButton {
 
 .filter-btn {
     color: white;
-    cursor: pointer;
 }
 
 .filter-buttons {
