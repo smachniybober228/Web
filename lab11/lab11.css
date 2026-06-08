@@ -229,3 +229,15 @@ ol:empty::before {
     width: 50%;
     align-self: center;
 }
+
+.filter-btn {
+    color: white;
+    cursor: pointer;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}

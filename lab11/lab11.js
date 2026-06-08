@@ -32,13 +32,13 @@ function renderTodoList() {
     const todoList = document.getElementById('TodoList');
     todoList.innerHTML = '';
     const filteredTasks = getFilteredTasks();
-    filteredTasks.forEach((task, _) => {
-        const li = createTaskElement(task); // создаём DOM-элемент задачи
+    filteredTasks.forEach((task, index) => {
+        const li = createTaskElement(task, index); // создаём DOM-элемент задачи
         todoList.appendChild(li);
     });
 }
 
-function createTaskElement(task) {
+function createTaskElement(task, index) {
     // Создаём элементы
     const li = document.createElement('li');
     
@@ -51,8 +51,7 @@ function createTaskElement(task) {
     checkbox.checked = task.completed;
     checkbox.addEventListener("click", function() {
         task.completed = !task.completed;
-        saveTasksToStorage();
-        renderTodoList();
+        saveAndRender();
     });
     
     const checkmark = document.createElement('span');
@@ -74,8 +73,7 @@ function createTaskElement(task) {
     deleteBtn.textContent = '✖';
     deleteBtn.addEventListener("click", function() {
         tasks.splice(index, 1);
-        saveTasksToStorage();
-        renderTodoList();
+        saveAndRender();
     });
     
     // Собираем вложенность
@@ -112,8 +110,7 @@ createBtn.addEventListener("click", function() {
         date: todayFrmt,
         completed: false
     });
-    saveTasksToStorage();
-    renderTodoList();
+    saveAndRender();
 
     clearTextField();
 });
@@ -126,6 +123,27 @@ function setupFilterButtons() {
             renderTodoList();
         });
     });
+    updateFilterButtons();
+}
+
+function updateFilterButtons() {
+    const allCount = tasks.length;
+    const activeCount = tasks.filter(t => !t.completed).length;
+    const completedCount = tasks.filter(t => t.completed).length;
+
+    const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+    const activeBtn = document.querySelector('.filter-btn[data-filter="active"]');
+    const completedBtn = document.querySelector('.filter-btn[data-filter="completed"]');
+
+    if (allBtn) allBtn.textContent = `Все (${allCount})`;
+    if (activeBtn) activeBtn.textContent = `Активные (${activeCount})`;
+    if (completedBtn) completedBtn.textContent = `Выполненные (${completedCount})`;
+}
+
+function saveAndRender() {
+    saveTasksToStorage();
+    renderTodoList();
+    updateFilterButtons();
 }
 
 initTasks();
