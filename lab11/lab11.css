@@ -236,10 +236,22 @@ ol li:hover .MyButton {
     color: white;
 }
 
+.filter-btn.active {
+    font-weight: bold;
+    /* можно добавить цвет, подчёркивание и т.п. */
+}
+
+.filter-btn-container {
+    display: flex;
+    flex-direction: row;
+}
+
 .filter-buttons {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     width: 100%;
+    justify-content: space-between;                /* расстояние между кнопками */
+    /* убираем width: 100%; и justify-content: space-between; */
 }
 
 #filter-container {

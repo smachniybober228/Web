@@ -129,10 +129,12 @@ function setupFilterButtons() {
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
             currentFilter = btn.getAttribute('data-filter');
-            renderTodoList();
+            renderTodoList();                // перерисовываем список
+            setActiveFilterButton();          // обновляем активную кнопку и перемещаем сортировку
         });
     });
-    updateFilterButtons();
+    updateFilterButtons();                   // обновляем текст кнопок (счётчики)
+    setActiveFilterButton();                 // инициализация активной кнопки и позиции сортировки
 }
 
 function setupSorting() {
@@ -191,6 +193,38 @@ function updateFilterButtons() {
     if (allBtn) allBtn.textContent = `Все (${allCount})`;
     if (activeBtn) activeBtn.textContent = `Активные (${activeCount})`;
     if (completedBtn) completedBtn.textContent = `Выполненные (${completedCount})`;
+}
+
+// Устанавливает активный класс на кнопку фильтра и перемещает блок сортировки
+function setActiveFilterButton() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === currentFilter) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    moveSortContainerToActiveFilter();
+}
+
+// Перемещает #sort-container внутрь .filter-buttons и ставит после активной кнопки
+function moveSortContainerToActiveFilter() {
+    const activeBtn = document.querySelector('.filter-btn.active');
+    const sortContainer = document.getElementById('sort-container');
+    if (!activeBtn || !sortContainer) return;
+
+    // Находим контейнер .filter-btn-container, в котором находится активная ссылка
+    const activeContainer = activeBtn.closest('.filter-btn-container');
+    if (!activeContainer) return;
+
+    // Если сортировка уже внутри этого контейнера и стоит на правильном месте – ничего не делаем
+    if (sortContainer.parentNode === activeContainer && activeContainer.lastElementChild === sortContainer) {
+        return;
+    }
+
+    // Перемещаем sortContainer в конец активного контейнера
+    activeContainer.appendChild(sortContainer);
 }
 
 function saveAndRender() {
