@@ -126,6 +126,13 @@ function setupFilterButtons() {
     updateFilterButtons();
 }
 
+function setupSortButton() {
+    const btn = document.getElementById("sort-btn");
+    btn.addEventListener("click", () => {
+        
+    });
+}
+
 function updateFilterButtons() {
     const allCount = tasks.length;
     const activeCount = tasks.filter(t => !t.completed).length;
@@ -148,3 +155,4 @@ function saveAndRender() {
 
 initTasks();
 setupFilterButtons();
+

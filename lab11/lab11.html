@@ -19,10 +19,21 @@
     <ol id="TodoList"></ol>
     <div class="todo-footer">
         <hr class="footer-line">
-        <div class="filter-buttons">
-            <a class="filter-btn" data-filter="all"></a>
-            <a class="filter-btn" data-filter="active"></a>
-            <a class="filter-btn" data-filter="completed"></a>
+        <div id="filter-container">
+            <div class="filter-buttons">
+                <a class="filter-btn" data-filter="all"></a>
+                <a class="filter-btn" data-filter="active"></a>
+                <a class="filter-btn" data-filter="completed"></a>
+            </div>
+            <div id="sort-container">
+                <button id="sort-btn">
+                    <img src="../resources/sort.png" alt="Сортировка">
+                </button>
+                <div id="sorting-options">
+                    <a>А-Я</a>
+                    <a>Я-А</a>
+                </div>
+            </div>
         </div>
     </div>
     </main>

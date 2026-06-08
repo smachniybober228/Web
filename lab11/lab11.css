@@ -238,6 +238,38 @@ ol li:hover .MyButton {
 .filter-buttons {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+
+#filter-container {
+    display: flex;
+    flex-direction: row;
     margin-left: 20px;
     margin-right: 20px;
+}
+
+#sort-container {
+    position: relative;
+}
+
+#sort-btn {
+    background-color: transparent;
+    border: 0;
+}
+
+#sort-btn img {
+    object-fit: cover;
+}
+
+#sorting-options {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    left: 35px;
+}
+
+#sorting-options a {
+    white-space: nowrap;
 }
