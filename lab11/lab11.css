@@ -169,7 +169,7 @@ ol li:hover .MyButton {
     color:gray;
 }
 
-ol:empty::before {
+/* ol:empty::before {
     content: "Не найдено ни одного дела";
     position: absolute;
     top: 50%;
@@ -181,11 +181,11 @@ ol:empty::before {
     background-color: rgba(0,0,0,0.5);
     padding: 20px;
     border-radius: 10px;
-    white-space: nowrap; /* чтобы текст не переносился */
+    white-space: nowrap; /* чтобы текст не переносился 
 
     font-family: inherit;
     font-size: inherit;
-}
+} */
 
 .CustomCheckbox {
     position: absolute;
