@@ -41,13 +41,13 @@ function renderTodoList() {
     const todoList = document.getElementById('TodoList');
     todoList.innerHTML = '';
     const filteredTasks = getFilteredTasks();
-    filteredTasks.forEach((task, index) => {
-        const li = createTaskElement(task, index); // создаём DOM-элемент задачи
+    filteredTasks.forEach((task, _) => {
+        const li = createTaskElement(task); // создаём DOM-элемент задачи
         todoList.appendChild(li);
     });
 }
 
-function createTaskElement(task, index) {
+function createTaskElement(task) {
     // Создаём элементы
     const li = document.createElement('li');
     
@@ -81,7 +81,8 @@ function createTaskElement(task, index) {
     deleteBtn.className = 'MyButton';
     deleteBtn.textContent = '✖';
     deleteBtn.addEventListener("click", function() {
-        tasks.splice(index, 1);
+        const index = tasks.indexOf(task);
+        if (index !== -1) tasks.splice(index, 1);
         saveAndRender();
     });
     
