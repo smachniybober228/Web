@@ -1,6 +1,6 @@
 let tasks = [];
 let currentFilter = 'all'; // 'all', 'active', 'completed'
-let currentSort = "A-Z" // 'A-Z', 'Z-A'
+let currentSort = "newest" // 'A-Z', 'Z-A', 'newest', 'oldest'
 
 function initTasks() {
     const stored = localStorage.getItem("todoList");
@@ -10,21 +10,18 @@ function initTasks() {
     else {
         // Задачи по умолчанию
         tasks = [
-            { task: "Почесать кошку", date: "24.08.2023", completed: false },
-            { task: "Полить картошку", date: "04.05.2022", completed: false },
-            { task: "Сложить в лукошко", date: "14.05.2022", completed: false }
+            { task: "Почесать кошку", date: "от 24.08.2023", completed: false },
+            { task: "Полить картошку", date: "от 04.05.2022", completed: false },
+            { task: "Сложить в лукошко", date: "от 14.05.2022", completed: false }
         ];
-        saveTasksToStorage();
     }
-    renderTodoList();
 }
 
 function initSorting() {
     const savedSort = localStorage.getItem('todoSort');
-    if (savedSort && (savedSort === 'A-Z' || savedSort === 'Z-A')) {
+    if (savedSort && (savedSort === 'A-Z' || savedSort === 'Z-A' || savedSort === 'newest' || savedSort === 'oldest')) {
         currentSort = savedSort;
     }
-    sortTasks();
 }
 
 // Фильтрует задачи по текущему фильтру
@@ -45,6 +42,14 @@ function renderTodoList() {
         const li = createTaskElement(task); // создаём DOM-элемент задачи
         todoList.appendChild(li);
     });
+}
+
+function parseDateFromString(dateStr) {
+    // Например: "от 24.08.2023" -> ["24", "08", "2023"]
+    const match = dateStr.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+    if (!match) return new Date(0); // если не распарсилось, вернуть минимальную дату
+    const [_, day, month, year] = match;
+    return new Date(`${year}-${month}-${day}T00:00:00`);
 }
 
 function createTaskElement(task) {
@@ -177,8 +182,20 @@ function setupSorting() {
 
 function sortTasks() {
     tasks.sort((a, b) => {
-        const comparison = a.task.localeCompare(b.task, 'ru');
-        return currentSort === 'A-Z' ? comparison : -comparison;
+        if (currentSort === 'A-Z') {
+            return a.task.localeCompare(b.task, 'ru');
+        } else if (currentSort === 'Z-A') {
+            return b.task.localeCompare(a.task, 'ru');
+        } else if (currentSort === 'newest') {
+            const dateA = parseDateFromString(a.date);
+            const dateB = parseDateFromString(b.date);
+            return dateB - dateA; // новые (большие даты) идут первыми
+        } else if (currentSort === 'oldest') {
+            const dateA = parseDateFromString(a.date);
+            const dateB = parseDateFromString(b.date);
+            return dateA - dateB; // старые (меньшие даты) идут первыми
+        }
+        return 0;
     });
 }
 
@@ -239,3 +256,5 @@ initTasks();
 initSorting();
 setupFilterButtons();
 setupSorting();
+
+saveAndRender();
